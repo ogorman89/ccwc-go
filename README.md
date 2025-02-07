@@ -9,7 +9,7 @@ ccwc is a command line utility written in Go using the Go stdlib that:
 # Installation
 ## Step 0: Clone the repo
 ```sh
-`git clone https://github.com/ogorman89/ccwc-go.git`
+git clone https://github.com/ogorman89/ccwc-go.git
 cd ccwc-go
 ```
 
