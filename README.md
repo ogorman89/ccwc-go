@@ -37,8 +37,10 @@ ccwc test.txt
 ```sh
 echo "test one two three" | ccwc
 ```
-\>\>\> 1 4 19 
+\>\>\> 1 4 19
+
 or
+
 ```sh
 cat test.txt | ccwc
 ```
