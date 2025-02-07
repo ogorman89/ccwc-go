@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"strings"
@@ -11,6 +12,10 @@ import (
 )
 
 func main() {
+	var reader *bufio.Reader
+	var filename string
+	var lineCount, wordCount, charCount, byteCount int
+
 	bytesArg := flag.Bool("c", false, "bytes arguement")
 	linesArg := flag.Bool("l", false, "lines arguement")
 	wordsArg := flag.Bool("w", false, "words arguement")
@@ -18,46 +23,31 @@ func main() {
 	flag.Parse()
 	fileArg := flag.Args()
 
-	var scanner *bufio.Scanner
-	var filename string
-	var lineCount, wordCount, charCount int
-	var byteCount int64
-
 	if len(fileArg) > 0 {
 		filename = fileArg[0]
-
-		fileInfo, err := os.Stat(filename)
-		if err != nil {
-			log.Fatal(err)
-		}
-		byteCount = fileInfo.Size()
 
 		file, err := os.Open(filename)
 		if err != nil {
 			log.Fatal(err)
 		}
 		defer file.Close()
-		scanner = bufio.NewScanner(file)
+		reader = bufio.NewReader(file)
 	} else {
-		//no filename read from stdin
-		// bufio.ScanBytes() <---- try this
-		scanner = bufio.NewScanner(os.Stdin)
-		fileInfo, err := os.Stdin.Stat()
+		reader = bufio.NewReader(os.Stdin)
+	}
+
+	for {
+		line, err := reader.ReadBytes('\n')
 		if err != nil {
-			log.Fatal(err)
+			if err == io.EOF {
+				break
+			}
+			log.Fatal()
 		}
-		byteCount = fileInfo.Size()
-	}
-
-	for scanner.Scan() {
-		line := scanner.Text()
-		wordCount += len(strings.Fields(line))
-		charCount += utf8.RuneCountInString(line)
+		byteCount += len(line)
+		wordCount += len(strings.Fields(string(line)))
+		charCount += utf8.RuneCountInString(string(line))
 		lineCount++
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
 	}
 
 	if *charsArg {
