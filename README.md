@@ -24,24 +24,27 @@ sudo mv ccwc /Users/usr/go/bin`
 ```
 *your bin may be in a different location, if you need to find your gopath type `$GOPATH` in your terminal
 
-## Using `ccwc`
+# Using `ccwc`
 You can now use `ccwc` via the command line!
 
-### run on a specific file
+## run on a specific file
 ```sh
 ccwc test.txt
 ```
+\>\>\> 7145 58164 342190 test.txt
 
-### run on stdin via pipe operator
+## run on stdin via pipe operator
 ```sh
-echo "hello world!" | ccwc
+echo "test one two three" | ccwc
 ```
+\>\>\> 1 4 19 
 or
 ```sh
 cat test.txt | ccwc
 ```
+\>\>\> 7145 58164 342190 
 
-#### Optional flags
+## Optional flags
 | Flag | Description |
 |----|-------------|
 | -c |	# bytes |
@@ -55,8 +58,9 @@ Examples:
 ```sh
 cat test.txt | ccwc -l
 ```
+\>\>\> 7145
 
 ```sh
 ccwc -c test.txt
 ```
-
+\>\>\> 342190 test.txt

@@ -51,14 +51,14 @@ func main() {
 	}
 
 	if *charsArg {
-		fmt.Println(charCount)
+		fmt.Println(charCount, filename)
 	} else if *bytesArg {
-		fmt.Println(byteCount)
+		fmt.Println(byteCount, filename)
 	} else if *linesArg {
-		fmt.Println(lineCount)
+		fmt.Println(lineCount, filename)
 	} else if *wordsArg {
-		fmt.Println(wordCount)
+		fmt.Println(wordCount, filename)
 	} else {
-		fmt.Println(lineCount, wordCount, byteCount)
+		fmt.Println(lineCount, wordCount, byteCount, filename)
 	}
 }
