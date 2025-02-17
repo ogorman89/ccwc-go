@@ -1,10 +1,13 @@
 # ccwc-go
-ccwc is a command line utility written in Go using the Go stdlib that:
+ccwc is a clone of the popular `wc` unix command line utility written in Go using the Go stdlib. 
+
+The core features are:
 - returns the bytes, lines, words, or characters in a file or stdin 
 - Accepts input from `stdin` via the pipe operator (`|`) or a file path
 - provides flexible output based on simple flags
-- *go must be installed on the host to use this utility
-- DEFAULT return is: lines words bytes
+- default return (no flags) is: `lines words bytes`
+- if no filename is specified the input defaults to stdin
+- *FYI: go must be installed on the host to use this utility
 
 ## 🚧 Next Steps
 - Some code runs when it is not needed, which is inefficient. For example, we count lines when the user only requests the character count to be returned. This should be corrected with conditional logic.
