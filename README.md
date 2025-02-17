@@ -6,6 +6,10 @@ ccwc is a command line utility written in Go using the Go stdlib that:
 - *go must be installed on the host to use this utility
 - DEFAULT return is: lines words bytes
 
+## 🚧 Next Steps
+- Some code runs when it is not needed, which is inefficient. For example, we count lines when the user only requests the character count to be returned. This should be corrected with conditional logic.
+- We could improve readability and maintainability by moving the core functionality outside the main(). Breaking the logic into a small number of functions would also make it easy to implement tests for these functions instead of simply testing the main(). 
+
 # Installation
 ## Step 0: Clone the repo
 ```sh
