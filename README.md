@@ -5,7 +5,7 @@ The core features are:
 - returns the bytes, lines, words, or characters in a file or stdin 
 - Accepts input from `stdin` via the pipe operator (`|`) or a file path
 - provides flexible output based on simple flags
-- default return (no flags) is: `lines words bytes`
+- default return (no flags) is: `lines words bytes filename`
 - if no filename is specified the input defaults to stdin
 - *FYI: go must be installed on the host to use this utility
 
